@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | EMS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="settings">
+
+<header class="topbar">
+    <button id="dashboard-menu"
+            class="dashboard-menu"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false">
+        ☰
+    </button>
+
+    <a class="brand" href="index.html">
+        <span class="brand-mark">E</span>
+        <span>Employee Management</span>
+    </a>
+</header>
+
+<aside
+        id="dashboard-sidebar"
+        class="dashboard-sidebar"
+        aria-label="Main navigation"
+    >
+
+        <!-- Sidebar Header -->
+
+        <div class="sidebar-header">
+
+            <a
+                class="sidebar-brand"
+                href="index.html"
+            >
+                <span class="sidebar-brand-mark">
+                    E
+                </span>
+            </a>
+
+
+            <button
+                id="sidebar-close"
+                class="sidebar-close"
+                type="button"
+                aria-label="Close navigation"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <!-- Sidebar Content -->
+
+        <div class="sidebar-content">
+
+
+            <!-- Main Navigation -->
+
+            <div class="sidebar-section">
+
+                <p class="sidebar-section-title">
+                    Main
+                </p>
+
+
+                <a
+                    class="sidebar-link"
+                    href="index.html"
+                >
+                    <span class="sidebar-icon">
+                        ⌂
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="employees.html"
+                >
+                    <span class="sidebar-icon">
+                        👥
+                    </span>
+
+                    <span>
+                        Employees
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="departments.html"
+                >
+                    <span class="sidebar-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Departments
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="projects.html"
+                >
+                    <span class="sidebar-icon">
+                        ▣
+                    </span>
+
+                    <span>
+                        Projects
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="assign-project.html"
+                >
+                    <span class="sidebar-icon">
+                        ↔
+                    </span>
+
+                    <span>
+                        Assignments
+                    </span>
+                </a>
+
+            </div>
+
+
+
+            <!-- System Navigation -->
+
+            <div class="sidebar-section">
+
+                <p class="sidebar-section-title">
+                    System
+                </p>
+
+
+                <a
+                    class="sidebar-link active"
+                    href="settings.html"
+                >
+                    <span class="sidebar-icon">
+                        ⚙
+                    </span>
+
+                    <span>
+                        Settings
+                    </span>
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Sidebar Footer -->
+
+        <div class="sidebar-footer">
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-avatar">
+                    A
+                </div>
+
+
+                <div class="sidebar-user-info">
+
+                    <div class="sidebar-user-name">
+                        Admin User
+                    </div>
+
+                    <div class="sidebar-user-role">
+                        Administrator
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="logout-button"
+                class="sidebar-logout"
+                type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+<div id="dashboard-overlay" class="dashboard-overlay"></div>
+
+<main class="settings-container">
+
+    <div class="settings-header">
+        <div>
+            <h1>Settings</h1>
+            <p>Manage your account and security preferences.</p>
+        </div>
+    </div>
+
+    <!-- ACCOUNT SETTINGS -->
+    <section class="settings-card">
+
+        <div class="settings-card-header">
+            <div class="settings-icon">👤</div>
+
+            <div>
+                <h2>Account Settings</h2>
+                <p>Your current account information.</p>
+            </div>
+        </div>
+
+        <div class="account-profile">
+
+            <div class="large-user-avatar" id="profile-avatar">
+                U
+            </div>
+
+            <div>
+                <h3 id="profile-name">Loading...</h3>
+                <p id="profile-role">Loading...</p>
+            </div>
+
+        </div>
+
+        <div class="settings-grid">
+
+            <div class="setting-field">
+                <label>Username</label>
+
+                <div class="setting-value" id="username">
+                    Loading...
+                </div>
+            </div>
+
+            <div class="setting-field">
+                <label>Email</label>
+
+                <div class="setting-value" id="email">
+                    Loading...
+                </div>
+            </div>
+
+            <div class="setting-field">
+                <label>Role</label>
+
+                <div class="setting-value" id="role">
+                    Loading...
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SECURITY -->
+    <section class="settings-card">
+
+        <div class="settings-card-header">
+
+            <div class="settings-icon">🔐</div>
+
+            <div>
+                <h2>Security</h2>
+                <p>Verify your current password before changing it.</p>
+            </div>
+
+        </div>
+
+        <form id="change-password-form" autocomplete="off">
+
+            <div class="password-grid">
+
+                <div class="setting-field">
+
+                    <label for="currentPassword">
+                        Current password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="currentPassword"
+                        name="currentPassword"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="setting-field">
+
+                    <label for="newPassword">
+                        New password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="newPassword"
+                        name="newPassword"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="setting-field">
+
+                    <label for="confirmPassword">
+                        Confirm new password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="password-feedback"
+                class="password-feedback"
+                role="status"
+                aria-live="polite">
+            </div>
+
+
+            <button
+                type="submit"
+                class="settings-save-button"
+                id="change-password-button">
+                Change Password
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- SYSTEM INFORMATION -->
+    <section class="settings-card">
+
+        <div class="settings-card-header">
+
+            <div class="settings-icon">⚙️</div>
+
+            <div>
+                <h2>System Information</h2>
+                <p>Technology used by this application.</p>
+            </div>
+
+        </div>
+
+
+        <div class="system-info-grid">
+
+            <div class="system-info-item">
+                <span>Application</span>
+                <strong>Employee Management System</strong>
+            </div>
+
+            <div class="system-info-item">
+                <span>Backend</span>
+                <strong>Java Servlets</strong>
+            </div>
+
+            <div class="system-info-item">
+                <span>Database</span>
+                <strong>MySQL</strong>
+            </div>
+
+            <div class="system-info-item">
+                <span>Application server</span>
+                <strong>Apache Tomcat 10.1</strong>
+            </div>
+
+            <div class="system-info-item">
+                <span>Database access</span>
+                <strong>JDBC</strong>
+            </div>
+
+            <div class="system-info-item">
+                <span>Authentication</span>
+                <strong>HTTP Session</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="js/sidebar.js"></script>
+<script src="js/settings.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EMS | Projects</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body data-project-page="list">
+<header class="topbar">
+
+        <button
+            id="dashboard-menu"
+            class="dashboard-menu"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+
+        >
+            ☰
+        </button>
+
+
+        <a
+            class="brand"
+            href="index.html"
+        >
+            <span class="brand-mark">E</span>
+            <span>Employee Management</span>
+        </a>
+
+        <a
+        class="navbar-add-project"
+        href="add-project.html"
+    >
+        + Add Project
+    </a>
+
+        
+    </header>
+    <aside
+        id="dashboard-sidebar"
+        class="dashboard-sidebar"
+        aria-label="Main navigation"
+    >
+
+        <!-- Sidebar Header -->
+
+        <div class="sidebar-header">
+
+            <a
+                class="sidebar-brand"
+                href="index.html"
+            >
+                <span class="sidebar-brand-mark">
+                    E
+                </span>
+            </a>
+
+
+            <button
+                id="sidebar-close"
+                class="sidebar-close"
+                type="button"
+                aria-label="Close navigation"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <!-- Sidebar Content -->
+
+        <div class="sidebar-content">
+
+
+            <!-- Main Navigation -->
+
+            <div class="sidebar-section">
+
+                <p class="sidebar-section-title">
+                    Main
+                </p>
+
+
+                <a
+                    class="sidebar-link"
+                    href="index.html"
+                >
+                    <span class="sidebar-icon">
+                        ⌂
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="employees.html"
+                >
+                    <span class="sidebar-icon">
+                        👥
+                    </span>
+
+                    <span>
+                        Employees
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="departments.html"
+                >
+                    <span class="sidebar-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Departments
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="projects.html"
+                >
+                    <span class="sidebar-icon">
+                        ▣
+                    </span>
+
+                    <span>
+                        Projects
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="assign-project.html"
+                >
+                    <span class="sidebar-icon">
+                        ↔
+                    </span>
+
+                    <span>
+                        Assignments
+                    </span>
+                </a>
+
+            </div>
+
+
+
+            <!-- System Navigation -->
+
+            <div class="sidebar-section">
+
+                <p class="sidebar-section-title">
+                    System
+                </p>
+
+
+                <a
+                    class="sidebar-link"
+                    href="settings.html"
+                >
+                    <span class="sidebar-icon">
+                        ⚙
+                    </span>
+
+                    <span>
+                        Settings
+                    </span>
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Sidebar Footer -->
+
+        <div class="sidebar-footer">
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-avatar">
+                    A
+                </div>
+
+
+                <div class="sidebar-user-info">
+
+                    <div class="sidebar-user-name">
+                        Admin User
+                    </div>
+
+                    <div class="sidebar-user-role">
+                        Administrator
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="logout-button"
+                class="sidebar-logout"
+                type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- Sidebar Overlay -->
+
+    <div
+        id="dashboard-overlay"
+        class="dashboard-overlay"
+    ></div>
+    
+    <main class="shell"><section class="page-heading"><div><p class="eyebrow">Delivery directory</p><h1>Projects</h1><p class="muted">Track active work and keep project details current.</p></div><a class="button primary" href="add-project.html">+ Add project</a></section>
+<section class="toolbar"><div class="toolbar-field"><label for="project-search">Search name, description, or status</label><div class="search"><span>⌕</span><input id="project-search" type="search" placeholder="Search projects" autocomplete="off"></div></div><label class="select-label">Status<select id="project-status-filter"><option value="">All statuses</option><option>Active</option><option>Completed</option><option>On Hold</option><option>Cancelled</option></select></label></section>
+<div id="project-feedback" class="feedback" hidden></div><section class="table-wrap project-table-wrap"><table><thead><tr><th>ID</th><th>Project name</th><th>Description</th><th>Start date</th><th>End date</th><th>Status</th><th>Actions</th></tr></thead><tbody id="project-rows"><tr><td colspan="7" class="empty">Loading projects...</td></tr></tbody></table></section></main>
+<script src="js/sidebar.js"></script>
+<script src="js/project.js"></script>
+</body>
+</html>

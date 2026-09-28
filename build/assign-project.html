@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>EMS | Assignments</title><link rel="stylesheet" href="css/style.css"></head>
+<body data-assignment-page="true">
+<header class="topbar">
+
+        <button
+            id="dashboard-menu"
+            class="dashboard-menu"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+
+        >
+            ☰
+        </button>
+
+
+        <a
+            class="brand"
+            href="index.html"
+        >
+            <span class="brand-mark">E</span>
+            <span>Employee Management</span>
+        </a>
+        <a class="active assignment-link" href="assign-project.html">
+    Assignments
+</a>
+
+
+
+        
+    </header>
+    
+    <aside
+        id="dashboard-sidebar"
+        class="dashboard-sidebar"
+        aria-label="Main navigation"
+    >
+
+        <!-- Sidebar Header -->
+
+        <div class="sidebar-header">
+
+            <a
+                class="sidebar-brand"
+                href="index.html"
+            >
+                <span class="sidebar-brand-mark">
+                    E
+                </span>
+            </a>
+
+
+            <button
+                id="sidebar-close"
+                class="sidebar-close"
+                type="button"
+                aria-label="Close navigation"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <!-- Sidebar Content -->
+
+        <div class="sidebar-content">
+
+
+            <!-- Main Navigation -->
+
+            <div class="sidebar-section">
+
+                <p class="sidebar-section-title">
+                    Main
+                </p>
+
+
+                <a
+                    class="sidebar-link"
+                    href="index.html"
+                >
+                    <span class="sidebar-icon">
+                        ⌂
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="employees.html"
+                >
+                    <span class="sidebar-icon">
+                        👥
+                    </span>
+
+                    <span>
+                        Employees
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="departments.html"
+                >
+                    <span class="sidebar-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Departments
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="projects.html"
+                >
+                    <span class="sidebar-icon">
+                        ▣
+                    </span>
+
+                    <span>
+                        Projects
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="assign-project.html"
+                >
+                    <span class="sidebar-icon">
+                        ↔
+                    </span>
+
+                    <span>
+                        Assignments
+                    </span>
+                </a>
+
+            </div>
+
+
+
+            <!-- System Navigation -->
+
+            <div class="sidebar-section">
+
+                <p class="sidebar-section-title">
+                    System
+                </p>
+
+
+                <a
+                    class="sidebar-link"
+                    href="settings.html"
+                >
+                    <span class="sidebar-icon">
+                        ⚙
+                    </span>
+
+                    <span>
+                        Settings
+                    </span>
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Sidebar Footer -->
+
+        <div class="sidebar-footer">
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-avatar">
+                    A
+                </div>
+
+
+                <div class="sidebar-user-info">
+
+                    <div class="sidebar-user-name">
+                        Admin User
+                    </div>
+
+                    <div class="sidebar-user-role">
+                        Administrator
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="logout-button"
+                class="sidebar-logout"
+                type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- Sidebar Overlay -->
+
+    <div
+        id="dashboard-overlay"
+        class="dashboard-overlay"
+    ></div>
+    <main class="shell"><section class="page-heading"><div><p class="eyebrow">People / Delivery</p><h1>Assign Employee to Project</h1><p class="muted">Connect people to the work they support.</p></div></section>
+<section class="form-panel assignment-form-panel"><div id="assignment-feedback" class="feedback" hidden></div><form id="assignment-form" novalidate><div class="form-grid"><label>Employee<select name="employeeId" id="assignment-employee" required><option value="">Select employee</option></select><span class="field-error"></span></label><label>Project<select name="projectId" id="assignment-project" required><option value="">Select project</option></select><span class="field-error"></span></label><label>Role<input name="role" required maxlength="100" placeholder="e.g. Backend Developer"><span class="field-error"></span></label><label>Assigned date<input name="assignedDate" type="date" required><span class="field-error"></span></label></div><div class="form-actions"><button class="button primary" type="submit">Assign employee</button></div></form></section>
+<section class="assignment-section"><div class="section-heading"><div><p class="eyebrow">Current assignments</p><h2>Employee-project assignments</h2></div></div><div class="toolbar assignment-toolbar"><div class="toolbar-field"><label for="assignment-search">Search employee, project, or role</label><div class="search"><span>⌕</span><input id="assignment-search" type="search" placeholder="Search assignments" autocomplete="off"></div></div><label class="select-label">Project view<select id="assignment-project-filter"><option value="">All projects</option></select></label><label class="select-label">Employee view<select id="assignment-employee-filter"><option value="">All employees</option></select></label></div><section class="table-wrap"><table><thead><tr><th>Employee</th><th>Department</th><th>Project</th><th>Role</th><th>Date</th><th>Action</th></tr></thead><tbody id="assignment-rows"><tr><td colspan="6" class="empty">Loading assignments...</td></tr></tbody></table></section></section></main>
+<script src="js/employee-project.js"></script>
+<script src="js/script.js"></script>
+<script src="js/sidebar.js"></script>
+</body></html>

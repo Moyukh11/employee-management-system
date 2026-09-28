@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EMS | Departments</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="departments">
+
+    <!-- =========================
+         TOP NAVBAR
+    ========================== -->
+
+    <header class="topbar">
+
+        <button
+            id="dashboard-menu"
+            class="dashboard-menu"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+        <a
+            class="brand"
+            href="index.html"
+        >
+            <span class="brand-mark">E</span>
+            <span>Employee Management</span>
+        </a>
+
+        <!-- Add Department Button -->
+        <button
+            id="add-department-nav"
+            class="navbar-add-department"
+            type="button"
+        >
+            + Add Department
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside
+        id="dashboard-sidebar"
+        class="dashboard-sidebar"
+        aria-label="Main navigation"
+    >
+
+        <!-- Sidebar Header -->
+
+        <div class="sidebar-header">
+
+            <a
+                class="sidebar-brand"
+                href="index.html"
+            >
+                <span class="sidebar-brand-mark">
+                    E
+                </span>
+            </a>
+
+            <button
+                id="sidebar-close"
+                class="sidebar-close"
+                type="button"
+                aria-label="Close navigation"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- Sidebar Content -->
+
+        <div class="sidebar-content">
+
+            <!-- Main Navigation -->
+
+            <div class="sidebar-section">
+
+                <p class="sidebar-section-title">
+                    Main
+                </p>
+
+
+                <a
+                    class="sidebar-link"
+                    href="index.html"
+                >
+                    <span class="sidebar-icon">
+                        ⌂
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="employees.html"
+                >
+                    <span class="sidebar-icon">
+                        👥
+                    </span>
+
+                    <span>
+                        Employees
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link active"
+                    href="departments.html"
+                >
+                    <span class="sidebar-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Departments
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="projects.html"
+                >
+                    <span class="sidebar-icon">
+                        ▣
+                    </span>
+
+                    <span>
+                        Projects
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="assign-project.html"
+                >
+                    <span class="sidebar-icon">
+                        ↔
+                    </span>
+
+                    <span>
+                        Assignments
+                    </span>
+                </a>
+
+            </div>
+
+
+            <!-- System Navigation -->
+
+            <div class="sidebar-section">
+
+                <p class="sidebar-section-title">
+                    System
+                </p>
+
+
+                <a
+                    class="sidebar-link"
+                    href="#"
+                >
+                    <span class="sidebar-icon">
+                        ⚙
+                    </span>
+
+                    <span>
+                        Settings
+                    </span>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Sidebar Footer -->
+
+        <div class="sidebar-footer">
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-avatar">
+                    A
+                </div>
+
+                <div class="sidebar-user-info">
+
+                    <div class="sidebar-user-name">
+                        Admin User
+                    </div>
+
+                    <div class="sidebar-user-role">
+                        Administrator
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="logout-button"
+                class="sidebar-logout"
+                type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Sidebar Overlay -->
+
+    <div
+        id="dashboard-overlay"
+        class="dashboard-overlay"
+    ></div>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="shell">
+
+
+        <!-- Page Heading -->
+
+        <section class="page-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    Organization directory
+                </p>
+
+                <h1>
+                    Departments
+                </h1>
+
+                <p class="muted">
+                    Manage departments and view the employees assigned to each department.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ADD DEPARTMENT FORM
+        ========================== -->
+
+        <section
+            id="department-form-container"
+            class="form-card"
+            hidden
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        Department management
+                    </p>
+
+                    <h2>
+                        Add Department
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="cancel-department"
+                    class="button secondary"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+
+            <form id="department-form">
+
+                <div class="form-grid">
+
+                    <div class="field">
+
+                        <label for="department-name">
+                            Department Name
+                        </label>
+
+                        <input
+                            id="department-name"
+                            name="name"
+                            type="text"
+                            placeholder="e.g. Engineering"
+                            maxlength="100"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="submit"
+                        class="button primary"
+                    >
+                        Add Department
+                    </button>
+
+
+                    <button
+                        id="cancel-department-2"
+                        type="button"
+                        class="button secondary"
+                    >
+                        Cancel
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- =========================
+             SEARCH
+        ========================== -->
+
+        <section class="toolbar">
+
+            <div class="toolbar-field">
+
+                <label for="department-search">
+                    Search departments
+                </label>
+
+                <div class="search">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input
+                        id="department-search"
+                        type="search"
+                        placeholder="Search department..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Feedback -->
+
+        <div
+            id="department-feedback"
+            class="feedback"
+            hidden
+        ></div>
+
+
+        <!-- =========================
+             DEPARTMENT LIST
+        ========================== -->
+
+        <section
+            id="department-list"
+            class="department-grid"
+        >
+
+            <div class="empty">
+                Loading departments...
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="js/sidebar.js"></script>
+    <script src="js/departments.js"></script>
+
+</body>
+
+</html>

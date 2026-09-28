@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project - Employee Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="add-project">
+
+<header class="topbar">
+
+        <button
+            id="dashboard-menu"
+            class="dashboard-menu"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+
+        >
+            ☰
+        </button>
+
+
+        <a
+            class="brand"
+            href="index.html"
+        >
+            <span class="brand-mark">E</span>
+            <span>Employee Management</span>
+        </a>
+
+
+        
+    </header>
+
+
+
+<aside id="dashboard-sidebar" class="dashboard-sidebar" aria-label="Main navigation">
+
+<div class="sidebar-header">
+    <div class="sidebar-brand">EMS</div>
+
+    <button
+        id="sidebar-close"
+        class="sidebar-close"
+        type="button"
+        aria-label="Close navigation menu"
+    >×</button>
+</div>
+
+<div class="sidebar-content">
+
+    <div class="sidebar-section">
+        <p class="sidebar-section-title">MAIN</p>
+
+        <a href="index.html" class="sidebar-link">
+            <span class="sidebar-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="employees.html" class="sidebar-link">
+            <span class="sidebar-icon">👥</span>
+            <span>Employees</span>
+        </a>
+
+        <a href="departments.html" class="sidebar-link">
+            <span class="sidebar-icon">▦</span>
+            <span>Departments</span>
+        </a>
+
+        <a href="projects.html" class="sidebar-link active">
+            <span class="sidebar-icon">▣</span>
+            <span>Projects</span>
+        </a>
+
+        <a href="assign-project.html" class="sidebar-link">
+            <span class="sidebar-icon">↔</span>
+            <span>Assign Project</span>
+        </a>
+    </div>
+
+    <div class="sidebar-section">
+        <p class="sidebar-section-title">OTHER</p>
+
+
+        <a href="#" class="sidebar-link">
+            <span class="sidebar-icon">⚙</span>
+            <span>Settings</span>
+        </a>
+    </div>
+
+</div>
+
+<div class="sidebar-footer">
+
+    <div class="sidebar-user">
+        <div class="sidebar-avatar">A</div>
+
+        <div>
+            <strong>Admin User</strong>
+            <span>Administrator</span>
+        </div>
+    </div>
+
+    <button
+        id="logout-button"
+        class="sidebar-logout"
+        type="button"
+    >
+        Logout
+    </button>
+
+</div>
+
+</aside>
+
+<div id="dashboard-overlay" class="dashboard-overlay"></div>
+
+<main class="shell">
+
+<section class="page-heading">
+    <div>
+        <p class="eyebrow">Project Management</p>
+        <h1>Add Project</h1>
+        <p>Create a new project for the organization.</p>
+    </div>
+
+    <a href="projects.html" class="button ghost">
+        ← Back to Projects
+    </a>
+</section>
+
+<div id="feedback" class="feedback" aria-live="polite"></div>
+
+
+<section class="panel form-panel">
+
+    <div class="panel-heading">
+        <div>
+            <h2>Project Information</h2>
+            <p class="muted">
+                Enter the project details below.
+            </p>
+        </div>
+    </div>
+
+
+    <form id="project-form" class="form-grid">
+
+        <div class="form-group">
+            <label for="name">Project Name</label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter project name"
+                required
+            >
+        </div>
+
+
+        <div class="form-group full-width">
+            <label for="description">Description</label>
+
+            <textarea
+                id="description"
+                name="description"
+                rows="5"
+                placeholder="Enter project description"
+            ></textarea>
+        </div>
+
+
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+
+            <input
+                type="date"
+                id="startDate"
+                name="startDate"
+            >
+        </div>
+
+
+        <div class="form-group">
+            <label for="endDate">End Date</label>
+
+            <input
+                type="date"
+                id="endDate"
+                name="endDate"
+            >
+        </div>
+
+
+        <div class="form-group">
+            <label for="status">Status</label>
+
+            <select
+                id="status"
+                name="status"
+                required
+            >
+                <option value="Active">Active</option>
+                <option value="Completed">Completed</option>
+                <option value="On Hold">On Hold</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </div>
+
+
+        <div class="form-actions">
+
+            <a href="projects.html" class="button ghost">
+                Cancel
+            </a>
+
+            <button
+                type="submit"
+                class="button primary"
+            >
+                Add Project
+            </button>
+
+        </div>
+
+    </form>
+
+</section>
+```
+
+</main>
+
+<script src="js/project.js"></script>
+
+<script src="js/sidebar.js"></script>
+
+</body>
+</html>

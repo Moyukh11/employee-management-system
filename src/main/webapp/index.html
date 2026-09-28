@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>EMS | Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+
+<body data-page="dashboard">
+
+
+    <!-- =========================
+         TOP NAVBAR
+    ========================== -->
+
+    <header class="topbar">
+
+        <button
+            id="dashboard-menu"
+            class="dashboard-menu"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+
+        >
+            ☰
+        </button>
+
+
+        <a
+            class="brand"
+            href="index.html"
+        >
+            <span class="brand-mark">E</span>
+            <span>Employee Management</span>
+        </a>
+
+
+        
+    </header>
+
+
+
+    <!-- =========================
+         SLIDING SIDEBAR
+    ========================== -->
+
+    <aside
+        id="dashboard-sidebar"
+        class="dashboard-sidebar"
+        aria-label="Main navigation"
+    >
+
+        <!-- Sidebar Header -->
+
+        <div class="sidebar-header">
+
+            <a
+                class="sidebar-brand"
+                href="index.html"
+            >
+                <span class="sidebar-brand-mark">
+                    E
+                </span>
+            </a>
+
+
+            <button
+                id="sidebar-close"
+                class="sidebar-close"
+                type="button"
+                aria-label="Close navigation"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <!-- Sidebar Content -->
+
+        <div class="sidebar-content">
+
+
+            <!-- Main Navigation -->
+
+            <div class="sidebar-section">
+
+                <p class="sidebar-section-title">
+                    Main
+                </p>
+
+
+                <a
+                    class="sidebar-link"
+                    href="index.html"
+                >
+                    <span class="sidebar-icon">
+                        ⌂
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="employees.html"
+                >
+                    <span class="sidebar-icon">
+                        👥
+                    </span>
+
+                    <span>
+                        Employees
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="departments.html"
+                >
+                    <span class="sidebar-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Departments
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="projects.html"
+                >
+                    <span class="sidebar-icon">
+                        ▣
+                    </span>
+
+                    <span>
+                        Projects
+                    </span>
+                </a>
+
+
+                <a
+                    class="sidebar-link"
+                    href="assign-project.html"
+                >
+                    <span class="sidebar-icon">
+                        ↔
+                    </span>
+
+                    <span>
+                        Assignments
+                    </span>
+                </a>
+
+            </div>
+
+
+
+            <!-- System Navigation -->
+
+            <div class="sidebar-section">
+
+                <p class="sidebar-section-title">
+                    System
+                </p>
+
+
+                <a
+                    class="sidebar-link"
+                    href="settings.html"
+                >
+                    <span class="sidebar-icon">
+                        ⚙
+                    </span>
+
+                    <span>
+                        Settings
+                    </span>
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Sidebar Footer -->
+
+        <div class="sidebar-footer">
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-avatar">
+                    A
+                </div>
+
+
+                <div class="sidebar-user-info">
+
+                    <div class="sidebar-user-name">
+                        Admin User
+                    </div>
+
+                    <div class="sidebar-user-role">
+                        Administrator
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="logout-button"
+                class="sidebar-logout"
+                type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- Sidebar Overlay -->
+
+    <div
+        id="dashboard-overlay"
+        class="dashboard-overlay"
+    ></div>
+
+
+
+    <!-- =========================
+         MAIN DASHBOARD
+    ========================== -->
+
+    <main class="shell dashboard-main">
+
+
+        <!-- Feedback -->
+
+        <div
+            id="feedback"
+            class="feedback"
+            hidden
+        ></div>
+
+
+
+        <!-- Page Heading -->
+
+        <section class="page-heading">
+
+            <p class="eyebrow">
+                Overview
+            </p>
+
+            <h1>
+                Dashboard
+            </h1>
+
+            <p class="muted">
+                Manage employees, departments, projects,
+                and assignments from one place.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             STAT CARDS
+        ========================== -->
+
+        <section class="stats">
+
+
+            <!-- Employees -->
+
+            <article class="stat-card">
+
+                <h3>
+                    Total Employees
+                </h3>
+
+                <strong id="employee-count">
+                    0
+                </strong>
+
+                <p class="muted">
+                    Employees in the organization
+                </p>
+
+            </article>
+
+
+
+            <!-- Departments -->
+
+            <article class="stat-card accent">
+
+                <h3>
+                    Departments
+                </h3>
+
+                <strong id="department-count">
+                    0
+                </strong>
+
+                <p>
+                    Active organizational departments
+                </p>
+
+            </article>
+
+
+
+            <!-- Projects -->
+
+            <article class="stat-card project-stat">
+
+                <h3>
+                    Projects
+                </h3>
+
+                <strong id="project-count">
+                    0
+                </strong>
+
+                <p class="muted">
+                    Projects currently tracked
+                </p>
+
+            </article>
+
+
+
+            <!-- Assignments -->
+
+            <article class="stat-card">
+
+                <h3>
+                    Assignments
+                </h3>
+
+                <strong id="assignment-count">
+                    0
+                </strong>
+
+                <p class="muted">
+                    Employee-project assignments
+                </p>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =========================
+             WELCOME BAND
+        ========================== -->
+
+        <section class="welcome-band">
+
+            <h2>
+                Welcome to Employee Management System
+            </h2>
+
+            <p>
+                Keep employee information organized,
+                manage departments, track projects,
+                and assign employees to projects efficiently.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             RECENT EMPLOYEES
+        ========================== -->
+
+        <section class="dashboard-section">
+
+
+            <div class="dashboard-section-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        People
+                    </p>
+
+                    <h2>
+                        Recent Employees
+                    </h2>
+
+                </div>
+
+
+                <a
+                    class="button ghost"
+                    href="employees.html"
+                >
+                    View all
+                </a>
+
+            </div>
+
+
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Employee
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Department
+                            </th>
+
+                            <th>
+                                Salary
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="recent-employees">
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="empty"
+                            >
+                                Loading employees...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PROJECT OVERVIEW
+        ========================== -->
+
+        <section class="dashboard-section">
+
+
+            <div class="dashboard-section-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        Projects
+                    </p>
+
+                    <h2>
+                        Project Overview
+                    </h2>
+
+                </div>
+
+
+                <a
+                    class="button ghost"
+                    href="projects.html"
+                >
+                    View all
+                </a>
+
+            </div>
+
+
+
+            <div class="project-table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Project
+                            </th>
+
+                            <th>
+                                Description
+                            </th>
+
+                            <th>
+                                Start Date
+                            </th>
+
+                            <th>
+                                End Date
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="project-overview">
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="empty"
+                            >
+                                Loading projects...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             QUICK ACTIONS
+        ========================== -->
+
+        <section class="dashboard-section">
+
+
+            <div class="dashboard-section-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        Shortcuts
+                    </p>
+
+                    <h2>
+                        Quick Actions
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="quick-actions">
+
+
+                <a
+                    class="quick-action"
+                    href="add-employee.html"
+                >
+                    <span>
+                        👤
+                    </span>
+
+                    <br>
+
+                    Add New Employee
+
+                </a>
+
+
+                <a
+                    class="quick-action"
+                    href="add-project.html"
+                >
+                    <span>
+                        📁
+                    </span>
+
+                    <br>
+
+                    Create New Project
+
+                </a>
+
+
+                <a
+                    class="quick-action"
+                    href="assign-project.html"
+                >
+                    <span>
+                        🔗
+                    </span>
+
+                    <br>
+
+                    Assign Employee to Project
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="js/script.js"></script>
+
+    <script src="js/sidebar.js"></script>
+
+
+</body>
+
+</html>
