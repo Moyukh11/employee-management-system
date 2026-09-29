@@ -1,148 +1,582 @@
 # Employee Management System
 
-This project is a Java web application for managing employee records using Jakarta Servlet, JDBC, MySQL, HTML, CSS, and vanilla JavaScript. It is structured as a small MVC-style app with a servlet layer, DAO layer, and static frontend pages.
+A full-stack Java web application for managing employees, departments, projects, and employee-project assignments. The application uses Jakarta Servlets, JDBC, MySQL, HTML5, CSS3, and vanilla JavaScript, with session-based authentication and role-based access control.
 
-## Features
+## 🚀 Live Demo
 
-- Add new employees with validation
-- Edit existing employee records
-- Delete employees with a confirmation prompt
-- Search employees by name, email, or department
-- Filter employees by department
-- View summary counts on the dashboard
-- Display department names through a `LEFT JOIN` from MySQL
+**Live Application:** https://employee-management-system-3giq.onrender.com/
 
-## Tech stack
+**GitHub Repository:** https://github.com/Moyukh11/employee-management-system
 
-- Java 17+
-- Jakarta Servlet 6 / Tomcat 10.1+
-- MySQL 8+
-- JDBC
-- HTML5, CSS3, plain JavaScript
-- No Maven or framework dependency management used in this project
+> The application is deployed on Render and uses Aiven MySQL as its cloud database.
 
-## Project structure
+---
 
-- `src/main/java/model` — `Employee`, `Department`, and `Project` model classes
-- `src/main/java/dao` — database access logic for employees, departments, and projects
-- `src/main/java/servlet` — request handlers for listing, searching, editing, creating, updating, and deleting employees and projects
-- `src/main/java/util` — database connection, validation, and JSON helper utilities
-- `src/main/webapp` — frontend pages, styles, scripts, and `WEB-INF/web.xml`
-- `database.sql` — schema and seed data for the MySQL database
-- `lib/` — local libraries such as `mysql-connector-j.jar`
-- `build/` — compiled classes and generated web assets
+## ✨ Features
 
-## Database setup
+### Employee Management
 
-1. Create the database and tables by running `database.sql` in MySQL.
-2. The script creates:
-   - `employee_db`
-   - `department` table
-   - `employee` table with a foreign key to `department`
-   - `project` table for project management records
-   - `employee_project` join table for employee/project assignments
-   - default department records: IT, HR, Finance, Sales, and Marketing
+* Add new employees with server-side and frontend validation
+* Edit employee information
+* Delete employees with confirmation
+* Search employees by name, email, or department
+* Filter employees by department
+* Display employee salary and department information
 
-Example:
+### Department Management
+
+* View all departments
+* Add and delete departments
+* Associate employees with departments
+* Display department names using SQL joins
+
+### Project Management
+
+* Create and edit projects
+* Delete projects
+* Search projects by name, description, or status
+* Filter projects by status
+* Track project start and end dates
+
+### Employee-Project Assignments
+
+* Assign employees to projects
+* Define an employee's role within a project
+* Store assignment dates
+* View employee-project relationships
+* Prevent duplicate employee-project assignments
+* Automatically remove assignments when an employee or project is deleted
+
+### Authentication & Security
+
+* Session-based authentication
+* Login and logout functionality
+* User signup
+* ADMIN and HR roles
+* Role-based access control
+* PBKDF2 password hashing
+* Protected API endpoints
+* ADMIN-only modification operations
+* PreparedStatements to reduce SQL injection risk
+
+### Dashboard
+
+* Total employees
+* Total departments
+* Total projects
+* Total project assignments
+* Responsive navigation sidebar
+* Desktop sidebar and mobile drawer layout
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology          | Purpose                              |
+| ------------------- | ------------------------------------ |
+| Java 17+            | Backend programming                  |
+| Jakarta Servlet 6   | HTTP request handling                |
+| Apache Tomcat 10.1+ | Web server / servlet container       |
+| JDBC                | Database connectivity                |
+| MySQL 8+            | Relational database                  |
+| Aiven MySQL         | Production cloud database            |
+| HTML5               | Frontend structure                   |
+| CSS3                | Styling and responsive design        |
+| JavaScript          | Frontend logic and API communication |
+| Fetch API           | AJAX requests                        |
+| Docker              | Production deployment                |
+| Render              | Cloud application hosting            |
+
+**Build approach:** Manual Java compilation, without Maven or Spring Boot.
+
+---
+
+## 🏗️ Architecture
+
+The application follows a simple MVC-style architecture:
+
+```text
+Frontend
+   │
+   │ Fetch API / HTTP Requests
+   ▼
+Jakarta Servlets
+   │
+   ▼
+DAO Layer
+   │
+   ▼
+JDBC
+   │
+   ▼
+MySQL Database
+```
+
+### Main layers
+
+```text
+Model
+ ├── Employee
+ ├── Department
+ ├── Project
+ ├── EmployeeProject
+ └── User
+
+DAO
+ ├── EmployeeDAO
+ ├── DepartmentDAO
+ ├── ProjectDAO
+ ├── EmployeeProjectDAO
+ └── UserDAO
+
+Servlet
+ ├── Authentication
+ ├── Employee operations
+ ├── Department operations
+ ├── Project operations
+ └── Assignment operations
+
+Util
+ ├── DBConnection
+ ├── PasswordUtil
+ ├── EmployeeValidator
+ ├── ProjectValidator
+ └── JsonUtil
+
+Frontend
+ ├── HTML pages
+ ├── CSS
+ └── JavaScript
+```
+
+---
+
+## 📁 Project Structure
+
+```text
+EMS/
+├── .vscode/
+├── build/
+│   ├── WEB-INF/
+│   ├── classes/
+│   ├── css/
+│   ├── js/
+│   └── *.html
+│
+├── lib/
+│   └── mysql-connector-j.jar
+│
+├── src/
+│   └── main/
+│       ├── java/
+│       │   ├── dao/
+│       │   ├── model/
+│       │   ├── servlet/
+│       │   └── util/
+│       │
+│       └── webapp/
+│           ├── css/
+│           ├── js/
+│           ├── WEB-INF/
+│           └── *.html
+│
+├── database.sql
+├── Dockerfile
+├── README.md
+└── .gitignore
+```
+
+### Important directories
+
+* `src/main/java/model` — Java model classes
+* `src/main/java/dao` — database access logic
+* `src/main/java/servlet` — HTTP request handlers
+* `src/main/java/util` — database, validation, password, and JSON utilities
+* `src/main/webapp` — HTML, CSS, JavaScript, and web configuration
+* `build` — compiled classes and deployment-ready web files
+* `lib` — external JAR dependencies
+
+---
+
+## 🗄️ Database
+
+The application uses MySQL with the following main tables:
+
+```text
+users
+department
+employee
+project
+employee_project
+```
+
+### Database relationships
+
+```text
+department
+     │
+     │ 1:N
+     ▼
+employee
+     │
+     │ N:M
+     ▼
+employee_project
+     ▲
+     │ N:M
+     │
+project
+```
+
+The `employee_project` table acts as a junction table between employees and projects.
+
+### Database setup
+
+For local development:
 
 ```sql
 CREATE DATABASE IF NOT EXISTS employee_db;
 USE employee_db;
 ```
 
-## Configuration
+Then run:
 
-Database settings are centralized in `src/main/java/util/DBConnection.java`.
+```text
+database.sql
+```
 
-The project reads these environment variables first:
+The database script creates the required tables and default department records.
 
-- `EMS_DB_URL`
-- `EMS_DB_USERNAME`
-- `EMS_DB_PASSWORD`
+---
 
-If they are not defined, it uses the defaults:
+## 🔐 Authentication
 
-- URL: `jdbc:mysql://localhost:3306/employee_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC`
-- Username: `root`
-- Password: empty string
+The application provides session-based authentication.
 
-Example on Windows PowerShell:
+### Roles
+
+| Role  | Access                |
+| ----- | --------------------- |
+| ADMIN | Read and write access |
+| HR    | Read-only access      |
+
+Password storage uses **PBKDF2WithHmacSHA256** with salted password hashes.
+
+Protected operations include:
+
+* Adding employees
+* Updating employees
+* Deleting employees
+* Adding projects
+* Updating projects
+* Deleting projects
+* Managing employee-project assignments
+
+Unauthenticated API requests return HTTP `401`, while unauthorized role-based operations return HTTP `403`.
+
+---
+
+## ⚙️ Configuration
+
+Database configuration is centralized in:
+
+```text
+src/main/java/util/DBConnection.java
+```
+
+The application reads these environment variables:
+
+```text
+EMS_DB_URL
+EMS_DB_USERNAME
+EMS_DB_PASSWORD
+```
+
+### Local database
+
+Example:
+
+```text
+EMS_DB_URL=jdbc:mysql://localhost:3306/employee_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+EMS_DB_USERNAME=root
+EMS_DB_PASSWORD=your_password
+```
+
+### Windows PowerShell
 
 ```powershell
 $env:EMS_DB_USERNAME = "root"
 $env:EMS_DB_PASSWORD = "your_password"
 ```
 
-## Authentication
+### Production
 
-The application uses session-based authentication with PBKDF2 password hashes. Run `database.sql` once after the authentication changes to create the `users` table and seed the local development accounts:
+The production application uses **Aiven MySQL** through environment variables configured in Render.
 
-- `admin` / `Admin@123` — `ADMIN`, full read/write access
-- `hr` / `Hr@123` — `HR`, read-only access
+The database password is not stored in the source code.
 
-Unauthenticated HTML requests redirect to `login.html`; API requests return HTTP 401. Mutating employee, project, and assignment requests require the `ADMIN` role and return HTTP 403 for `HR` users. The dashboard sidebar stays fixed on desktop and slides in as a drawer on smaller screens.
+---
 
-## Deployment steps
+## ☁️ Deployment
 
-1. Install MySQL and create the schema using `database.sql`.
-2. Install Tomcat 10.1 or later.
-3. Put `mysql-connector-j.jar` in Tomcat's `lib` folder or in the deployed app's `WEB-INF/lib` directory.
-4. Compile the Java classes and output them to `build/classes`.
-5. Copy the contents of `src/main/webapp` to the web application root, or deploy the project as a WAR/expanded app in Tomcat.
-6. Ensure the compiled classes are available under `WEB-INF/classes`.
-7. Start Tomcat and open the application in a browser, for example:
+The production application is deployed using:
 
 ```text
-http://localhost:8080/EMS/
+GitHub
+   │
+   ▼
+Render
+   │
+   ▼
+Docker + Tomcat 10.1
+   │
+   ▼
+Java Servlet Application
+   │
+   ▼
+Aiven MySQL
 ```
 
-## Example compilation command
+### Deployment stack
 
-Example Windows command from the project root:
+* GitHub — source code repository
+* Docker — application container
+* Apache Tomcat 10.1 — servlet container
+* Render — cloud hosting
+* Aiven — cloud MySQL database
+
+### Docker configuration
+
+The application is deployed as the Tomcat root application:
+
+```dockerfile
+FROM tomcat:10.1-jdk17-temurin
+
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
+
+RUN sed -i 's/port="8080"/port="10000"/' /usr/local/tomcat/conf/server.xml
+
+COPY build/ /usr/local/tomcat/webapps/ROOT/
+
+EXPOSE 10000
+
+CMD ["catalina.sh", "run"]
+```
+
+The application therefore runs at:
 
 ```text
-javac -cp "C:\path\to\tomcat\lib\jakarta.servlet-api.jar;lib\mysql-connector-j.jar" -d build\classes src\main\java\model\*.java src\main\java\util\*.java src\main\java\dao\*.java src\main\java\servlet\*.java
+https://employee-management-system-3giq.onrender.com/
 ```
 
-If your Tomcat installation contains the servlet API as a different JAR name, use the matching path from your environment.
+---
 
-## Request flow
+## 🧪 Local Compilation
 
-The servlet layer exposes these endpoints:
+From the project root:
 
-- `GET /listEmployees` — returns employee data and departments for the dashboard/table
-- `GET /searchEmployee?keyword=Rahul` — searches by name, email, or department
-- `GET /editEmployee?id=1` — loads a single employee for the edit form
-- `POST /addEmployee` — inserts a new employee
-- `POST /updateEmployee` — updates an employee by ID
-- `POST /deleteEmployee?id=1` — deletes an employee by ID
-- `GET /listProjects` — returns all projects
-- `GET /searchProject?keyword=Payroll` — searches project name, description, and status
-- `GET /editProject?id=1` — loads one project for editing
-- `POST /addProject` — creates a project
-- `POST /updateProject` — updates a project by ID
-- `POST /deleteProject?id=1` — deletes a project by ID
+```bash
+rm -rf build/classes
+mkdir -p build/classes
 
-Projects can be assigned to multiple employees from the Assignments page or add/edit project form. Assignments are stored in `employee_project` with role and assigned date, and the `employee_project` foreign keys cascade when an employee or project is deleted. For an already-created older join table, migrate it with: `ALTER TABLE employee_project ADD COLUMN id INT PRIMARY KEY AUTO_INCREMENT FIRST, ADD COLUMN role VARCHAR(100) NOT NULL DEFAULT 'Project team member', ADD COLUMN assigned_date DATE NOT NULL DEFAULT (CURRENT_DATE), ADD UNIQUE KEY unique_employee_project (employee_id, project_id);`.
+javac --release 17 \
+-cp "lib/*" \
+-d build/classes \
+$(find src/main/java -name "*.java")
+```
 
-The frontend sends AJAX requests using `fetch()`, and the backend responds with JSON messages for success or validation issues.
+Copy compiled classes:
 
-## Pages
+```bash
+rm -rf build/WEB-INF/classes
+mkdir -p build/WEB-INF/classes
 
-- `src/main/webapp/index.html` — dashboard with summary cards
-- `src/main/webapp/employees.html` — employee directory with search and filtering
-- `src/main/webapp/add-employee.html` — form for creating employees
-- `src/main/webapp/edit-employee.html` — form for updating employees
-- `src/main/webapp/projects.html` — project directory with search and status filtering
-- `src/main/webapp/add-project.html` — form for creating projects
-- `src/main/webapp/edit-project.html` — form for updating projects
+cp -r build/classes/* build/WEB-INF/classes/
+```
 
-## Notes
+Copy frontend files:
 
-- Frontend validation improves user experience, but server-side validation is also enforced in the Java servlet flow.
-- The app uses `PreparedStatement` throughout the DAO layer to reduce SQL injection risk.
-- Connection, statement, and result set resources are managed with try-with-resources.
+```bash
+cp -r src/main/webapp/* build/
+```
 
-## License
+Copy the MySQL connector:
 
-This project is intended for learning and local development use.
+```bash
+mkdir -p build/WEB-INF/lib
+cp lib/mysql-connector-j.jar build/WEB-INF/lib/
+```
+
+---
+
+## 🔌 API Endpoints
+
+### Employee
+
+```text
+GET  /listEmployees
+GET  /searchEmployee?keyword=Rahul
+GET  /editEmployee?id=1
+POST /addEmployee
+POST /updateEmployee
+POST /deleteEmployee?id=1
+```
+
+### Department
+
+```text
+GET  /listDepartments
+POST /addDepartment
+POST /deleteDepartment
+```
+
+### Project
+
+```text
+GET  /listProjects
+GET  /searchProject?keyword=Payroll
+GET  /editProject?id=1
+POST /addProject
+POST /updateProject
+POST /deleteProject?id=1
+```
+
+### Employee-Project Assignment
+
+```text
+GET  /listEmployeeProjects
+POST /assignEmployeeProject
+```
+
+### Authentication
+
+```text
+POST /login
+POST /logout
+POST /signup
+GET  /currentUser
+POST /changePassword
+```
+
+---
+
+## 🔄 Request Flow
+
+Example employee creation flow:
+
+```text
+User fills Add Employee form
+          │
+          ▼
+Frontend JavaScript validation
+          │
+          ▼
+Fetch API POST request
+          │
+          ▼
+AddEmployeeServlet
+          │
+          ▼
+EmployeeValidator
+          │
+          ▼
+EmployeeDAO
+          │
+          ▼
+PreparedStatement
+          │
+          ▼
+MySQL
+          │
+          ▼
+JSON response
+          │
+          ▼
+Frontend updates UI
+```
+
+---
+
+## 📄 Main Pages
+
+```text
+login.html
+signup.html
+index.html
+employees.html
+add-employee.html
+edit-employee.html
+departments.html
+projects.html
+add-project.html
+edit-project.html
+assign-project.html
+settings.html
+```
+
+---
+
+## 🔒 Security Practices
+
+The application implements several basic security practices:
+
+* Password hashing with PBKDF2
+* Salted password storage
+* Session-based authentication
+* Role-based authorization
+* PreparedStatements for database queries
+* Server-side validation
+* Frontend validation
+* Environment variables for database credentials
+* Database credentials are not hardcoded in `DBConnection.java`
+
+Sensitive local database dump files are excluded through `.gitignore`.
+
+---
+
+## 📊 Current Cloud Database
+
+The deployed Aiven database contains:
+
+```text
+Departments:  6
+Employees:    3
+Projects:     3
+Assignments:  6
+```
+
+These records are stored in the cloud database and are accessed by the Render deployment through JDBC.
+
+---
+
+## 🚀 Future Improvements
+
+Possible future enhancements include:
+
+* Employee profile photos
+* Pagination for large employee lists
+* Advanced dashboard analytics
+* Export employees to CSV/PDF
+* Email notifications
+* Audit logs
+* Password reset via email
+* Admin user management
+* Automated CI/CD deployment
+* Unit and integration testing
+
+---
+
+## 📝 Notes
+
+* Frontend validation improves user experience, but server-side validation is also enforced.
+* DAO classes use `PreparedStatement` for database operations.
+* JDBC resources are managed using try-with-resources.
+* The application does not use Maven, Spring Boot, Hibernate, or JPA.
+* Production database credentials are supplied through Render environment variables.
+* Local database dump files are intentionally excluded from Git tracking.
+
+---
+
+## 📜 License
+
+This project is intended for educational, portfolio, and demonstration purposes.
