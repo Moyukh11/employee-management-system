@@ -6,8 +6,8 @@ RUN rm -rf /usr/local/tomcat/webapps/ROOT
 # Render expects the web service to listen on port 10000
 RUN sed -i 's/port="8080"/port="10000"/' /usr/local/tomcat/conf/server.xml
 
-# Deploy EMS under /EMS
-COPY build/ /usr/local/tomcat/webapps/EMS/
+# Deploy EMS as the root application
+COPY build/ /usr/local/tomcat/webapps/ROOT/
 
 EXPOSE 10000
 
