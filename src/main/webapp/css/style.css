@@ -1474,3 +1474,9 @@ header.topbar a.navbar-add-employee:hover {
     }
 
 }
+/* Right-align navbar action buttons */
+header.topbar .navbar-add-employee,
+header.topbar .navbar-add-department,
+header.topbar .navbar-add-project {
+    margin-left: auto;
+}
